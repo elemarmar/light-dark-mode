@@ -20,6 +20,7 @@
 4. Creating a [toggle switch](https://www.w3schools.com/howto/howto_css_switch.asp)
 5. Setting attributes on the root element (html) 
 6. Using `document.documentElement` 
+7. Saving theme in localStorage
 
 <br>
 
@@ -97,6 +98,35 @@ We use property `target.checked` to check if the switch toggle has been checked 
 
 1. We set the `data-theme` attribute at the highest level of the html
 2. `document.documentElement` returns the...
+
+<br>
+
+We still need to change te icons, the text of the theme and the images. Wecreate two functions `darkMode()` and `lightMode()` to take care of this:
+
+```js
+function darkMode() {
+  nav.style.backgroundColor = 'rgb(0 0 0 / 50%)';
+  textBox.style.backgroundColor = 'rgb(255 255 255 / 50%)';
+  // Icon text
+  toggleIcon.children[0].textContent = 'Dark Mode';
+  // Change icon
+  toggleIcon.children[1].classList.remove('fa-sun');
+  toggleIcon.children[1].classList.add('fa-moon');
+  
+  // Changin images
+  image1.src = 'img/undraw_proud_coder_dark.svg';
+  image2.src = 'img/undraw_feeling_proud_dark.svg';
+  image3.src = 'img/undraw_conceptual_idea_dark.svg';
+}
+```
+
+<br>
+
+### LocalStorage
+
+<br>
+
+We use local storage to....
 
 <br>
 
