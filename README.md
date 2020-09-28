@@ -1,6 +1,6 @@
 # Light & Dark Mode
 
-%PICTURE%
+![cover](cover.png)
 
 %Description%
 
