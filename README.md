@@ -2,7 +2,7 @@
 
 ![cover](cover.png)
 
-%Description%
+The purpose of this project is to implement dark / light theme to a template website using plain JavaScript.
 
 <br>
 
@@ -51,19 +51,12 @@
 </div>
 ```
 
-<br>
-
-**style.css**
-
-```css
-
-```
+- The text *Light Mode* has to change to *Dark Mode* when in dark mode.
+- The styling of the switch is done via `slider` and `round` classes.
 
 <br>
 
 **script.js**
-
-<br>
 
 Add event listener to the toggle switch. We use the change event.
 
@@ -87,36 +80,36 @@ We create function that dynamically changes the theme
 function switchTheme(event) {
   if (event.target.checked) {
     document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    toggleDarkLightMode(DARK_THEME);
   } else {
     document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+    toggleDarkLightMode(LIGHT_THEME);
   }
-  
 }
 ```
 
 We use property `target.checked` to check if the switch toggle has been checked (show dark mode) or not (light mode).
 
 1. We set the `data-theme` attribute at the highest level of the html
-2. `document.documentElement` returns the...
+2. `document.documentElement` returns the root element -in this case `<html>`
 
 <br>
 
-We still need to change te icons, the text of the theme and the images. Wecreate two functions `darkMode()` and `lightMode()` to take care of this:
+We still need to change te **icons**, the **text** of the theme and the **images**. We create a single function `toggleDarkLightMode(mode)` that given a parameter, it changes the icon, text and images according to the theme choice.
+
+<br>
+
+I use two constants to identify the themes: `DARK_THEME` and `LIGHT_THEME`.
+
+There is a function `imageMode(mode)` that's in charge of changing the source of the images in the HTML document according to the chosen mode:
 
 ```js
-function darkMode() {
-  nav.style.backgroundColor = 'rgb(0 0 0 / 50%)';
-  textBox.style.backgroundColor = 'rgb(255 255 255 / 50%)';
-  // Icon text
-  toggleIcon.children[0].textContent = 'Dark Mode';
-  // Change icon
-  toggleIcon.children[1].classList.remove('fa-sun');
-  toggleIcon.children[1].classList.add('fa-moon');
-  
-  // Changin images
-  image1.src = 'img/undraw_proud_coder_dark.svg';
-  image2.src = 'img/undraw_feeling_proud_dark.svg';
-  image3.src = 'img/undraw_conceptual_idea_dark.svg';
+function imageMode(color) {
+  image1.src = `img/undraw_proud_coder_${color}.svg`;
+  image2.src = `img/undraw_feeling_proud_${color}.svg`;
+  image3.src = `img/undraw_conceptual_idea_${color}.svg`;
 }
 ```
 
@@ -126,17 +119,17 @@ function darkMode() {
 
 <br>
 
-We use local storage to....
+We use local storage to store the user theme preference so that when the user refreshes the page, the previous chosen theme remains. 
 
 <br>
 
 ---
 
-Background from [hero patterns](https://www.heropatterns.com/)
+- Background from [hero patterns](https://www.heropatterns.com/)
 
-Illustrations from [Undraw](https://undraw.co/illustrations)
+- Illustrations from [Undraw](https://undraw.co/illustrations)
 
-Icons from [FontAwesome](https://fontawesome.com/)
+- Icons from [FontAwesome](https://fontawesome.com/)
 
 
 
